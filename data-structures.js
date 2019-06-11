@@ -16,7 +16,6 @@ class MyArray {
   }
 
   pop () {
-    console.log('\npop!')
     delete this.data[this.length - 1]
     this.length--
     return this.length
@@ -33,17 +32,13 @@ class MyArray {
       }
     }
     console.log(`(${this.length})  [${printLine}]`)
-    console.log(JSON.stringify(this.data))
   }
 
   deleteAtIndex (index) {
-    console.log(`\ndelete: ${index} !`)
     if (index > this.length - 1) {
       console.log('err: out of bounds')
       return null
     }
-    console.log('before: ')
-    this.toString()
 
     for (let i = index; i < this.length; i++) {
       this.data[i] = this.data[i + 1]
@@ -52,10 +47,6 @@ class MyArray {
     delete this.data[this.length]
 
     this.length--
-
-    console.log('after: ')
-    this.toString()
-    console.log('\n')
   }
 
   unshift (item) {
@@ -64,7 +55,7 @@ class MyArray {
     }
     this.data[0] = item
     this.length++
-    
+
     this.toString()
 
     return null
@@ -80,8 +71,8 @@ console.log(dog.push('blue fish'))
 console.log(dog.push('5 fish'))
 dog.toString()
 
-console.log(dog.pop())
+dog.pop()
 dog.toString()
 
-dog.deleteAtIndex(0)
+dog.deleteAtIndex(3)
 dog.unshift('pig!')
