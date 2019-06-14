@@ -1,0 +1,31 @@
+{
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "programming"
+    ],
+    "verbose": true
+  },
+  "scripts": {
+    "test": "jest --watch -o",
+    "test-pr": "jest"
+  },
+  "devDependencies": {},
+  "name": "hacker-rank",
+  "version": "1.0.0",
+  "description": "a space to capture hacker rank practice",
+  "main": "magic-square.js",
+  "dependencies": {
+    "jest": "^24.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timothy-o-johnson/hacker-rank.git"
+  },
+  "author": "timothy-o-johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timothy-o-johnson/hacker-rank/issues"
+  },
+  "homepage": "https://github.com/timothy-o-johnson/hacker-rank#readme"
+}
