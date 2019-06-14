@@ -23,4 +23,11 @@ describe('firstRecurringCharacter()', () => {
 
     expect(firstRecurringCharacter.firstRecurringCharacter(input)).toEqual(solution)
   })
+
+  test('bonus: should return first repeated number', () => {
+    var input = [2, 5, 5, 2, 3, 5, 1, 2, 4]
+    var solution = 5
+
+    expect(firstRecurringCharacter.firstRecurringCharacter(input)).toEqual(solution)
+  })
 })
