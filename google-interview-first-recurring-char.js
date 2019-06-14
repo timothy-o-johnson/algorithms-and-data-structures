@@ -29,4 +29,23 @@ function firstRecurringCharacter (input) {
 // [2,5,5,2,3,5,1,2,4]
 // return 5 because the pairs are before 2,2
 
-module.exports = { firstRecurringCharacter }
+function firstRecurringCharacter2 (input) {
+  let prevMatchPosition = input.length
+  let currentMatchPosition, match
+
+  for (let i = 0; i < input.length; i++) {
+    for (let j = i + 1; j < input.length; j++) {
+      if (input[i] === input[j]) {
+        currentMatchPosition = j
+    
+        if (currentMatchPosition < prevMatchPosition) {
+          match = input[i]
+          prevMatchPosition = currentMatchPosition
+        }
+      }
+    }
+  }
+  return match
+}
+
+module.exports = { firstRecurringCharacter, firstRecurringCharacter2 }
