@@ -47,8 +47,21 @@ class LinkedList {
     newNode.next = this.head
     this.head = newNode
     this.length++
+    this.printlist()
 
-    console.log(JSON.stringify(this))
+   // console.log(JSON.stringify(this))
+  }
+
+  printlist () {
+    let list = ''
+    let currentNode = this.head
+
+    while (currentNode.next !== null) {
+      list += `${currentNode.value} --> `
+      currentNode = currentNode.next
+    }
+
+    console.log(`(${this.length}) ${list}${currentNode.value}`)
   }
 }
 
