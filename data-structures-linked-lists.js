@@ -109,6 +109,9 @@ class LinkedList {
       // update current node at index (next -- leave before untouched)
       leadNode.next = newNode
 
+      // update next node's before to point at new node
+      newNode.next.before = newNode
+
       this.length++
       this.printlist()
     }
@@ -128,11 +131,17 @@ class LinkedList {
     // point node prior to index to the node after index
 
     if (index > 0 && index < this.length - 1) {
-      const indexOfPriorNode = index - 1
-      let nodePriorToIndex = this.getNodeAtIndex(indexOfPriorNode)
-      nodePriorToIndex.next = this.getNodeAtIndex(index).next
+      // update the lead node
+      let indexNode = this.getNodeAtIndex(index)
+      let leadNode = indexNode.before
+      leadNode.next = indexNode.next
+
+      // update the 'next' node
+      let nextNode = indexNode.next
+      nextNode.before = leadNode
     } else if (index === 0) {
       this.head = this.head.next
+      this.head.before = null
     } else if (index >= this.length - 1) {
       let secondToLastNode = this.getNodeAtIndex(this.length - 2)
       secondToLastNode.next = null
