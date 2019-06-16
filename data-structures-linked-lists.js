@@ -38,7 +38,7 @@ class LinkedList {
     this.tail = newNode
     this.length++
 
-    return console.log(JSON.stringify(this))
+    this.printlist()
   }
 
   prepend (value) {
@@ -49,7 +49,7 @@ class LinkedList {
     this.length++
     this.printlist()
 
-   // console.log(JSON.stringify(this))
+    // console.log(JSON.stringify(this))
   }
 
   printlist () {
@@ -63,10 +63,41 @@ class LinkedList {
 
     console.log(`(${this.length}) ${list}${currentNode.value}`)
   }
+
+  insert (index, value) {
+    // handle a beginning insert
+    if (index === 0) {
+      this.prepend(value)
+      
+      // handle an ending insert
+    } else if (index >= this.length) {
+      this.append(value)
+
+      // handle in between
+    } else {
+      let currentNode = this.head
+
+      for (let i = 0; i < index - 1; i++) {
+        currentNode = currentNode.next
+      }
+
+      const newNode = new Node(value)
+
+      newNode.next = currentNode.next
+      currentNode.next = newNode
+
+      this.length++
+      this.printlist()
+    }
+  }
 }
 
 let myLinkedList = new LinkedList(10)
 myLinkedList.append(5)
 myLinkedList.append(16)
 myLinkedList.prepend(1)
+myLinkedList.insert(1, 2)
+myLinkedList.insert(0, 99)
+myLinkedList.insert(15, 99)
+myLinkedList.insert(-3, 99)
 console.log('all done!')
