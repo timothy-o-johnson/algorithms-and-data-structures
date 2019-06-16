@@ -16,6 +16,7 @@ class Node {
   constructor (value) {
     this.value = value
     this.next = null
+    this.before = null
   }
 }
 
@@ -31,20 +32,33 @@ class LinkedList {
     // create node
     const newNode = new Node(value)
 
-    // update the last node by reference
-    this.tail.next = newNode
+    // update lead node
+    let leadNode = this.tail
+    leadNode.next = newNode
 
-    // point reference to tail to newNode by reference
+    // update newNode (before, next)
+    newNode.before = leadNode
+    newNode.next = null
+
+    // point tail to newNode by reference
     this.tail = newNode
     this.length++
 
     this.printlist()
+    //console.log(JSON.stringify(this))
   }
 
   prepend (value) {
+    // create new node
     const newNode = new Node(value)
 
+    // update previous head.before to point to new node
+    this.head.before = newNode
+
+    // point new Node's next to current head
     newNode.next = this.head
+
+    // point head to new Node
     this.head = newNode
     this.length++
     this.printlist()
