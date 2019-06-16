@@ -68,7 +68,7 @@ class LinkedList {
     // handle a beginning insert
     if (index === 0) {
       this.prepend(value)
-      
+
       // handle an ending insert
     } else if (index >= this.length) {
       this.append(value)
@@ -76,12 +76,11 @@ class LinkedList {
       // handle in between
     } else {
       let currentNode = this.head
+      const newNode = new Node(value)
 
       for (let i = 0; i < index - 1; i++) {
         currentNode = currentNode.next
       }
-
-      const newNode = new Node(value)
 
       newNode.next = currentNode.next
       currentNode.next = newNode
@@ -89,6 +88,34 @@ class LinkedList {
       this.length++
       this.printlist()
     }
+  }
+
+  getNodeAtIndex (index) {
+    let currentNode = this.head
+    for (let i = 0; i < index; i++) {
+      currentNode = currentNode.next
+    }
+
+    // console.log(`value of node at index ${index} is ${currentNode.value}`)
+    return currentNode
+  }
+
+  remove (index) {
+    // point node prior to index to the node after index
+
+    if (index > 0 && index < this.length - 1) {
+      const indexOfPriorNode = index - 1
+      let nodePriorToIndex = this.getNodeAtIndex(indexOfPriorNode)
+      nodePriorToIndex.next = this.getNodeAtIndex(index).next
+    } else if (index === 0) {
+      this.head = this.head.next
+    } else if (index >= this.length - 1) {
+      let secondToLastNode = this.getNodeAtIndex(this.length - 2)
+      secondToLastNode.next = null
+      this.tail = secondToLastNode
+    }
+    this.length--
+    this.printlist()
   }
 }
 
@@ -99,5 +126,10 @@ myLinkedList.prepend(1)
 myLinkedList.insert(1, 2)
 myLinkedList.insert(0, 99)
 myLinkedList.insert(15, 99)
-myLinkedList.insert(-3, 99)
+myLinkedList.insert(-3, 102)
+myLinkedList.getNodeAtIndex(3)
+myLinkedList.remove(4)
+myLinkedList.remove(0)
+myLinkedList.remove(6)
+
 console.log('all done!')
