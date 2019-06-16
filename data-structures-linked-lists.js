@@ -45,7 +45,7 @@ class LinkedList {
     this.length++
 
     this.printlist()
-    //console.log(JSON.stringify(this))
+    // console.log(JSON.stringify(this))
   }
 
   prepend (value) {
@@ -71,11 +71,15 @@ class LinkedList {
     let currentNode = this.head
 
     while (currentNode.next !== null) {
-      list += `${currentNode.value} --> `
+      // get before and after values
+      let before = currentNode.before ? currentNode.before.value : null
+      let after = currentNode.next ? currentNode.next.value : null
+
+      list += `${currentNode.value} (${before}, ${after})--> `
       currentNode = currentNode.next
     }
 
-    console.log(`(${this.length}) ${list}${currentNode.value}`)
+    console.log(`(${this.length}) ${list}${currentNode.value} (${currentNode.before.value}, ${currentNode.next})`)
   }
 
   insert (index, value) {
@@ -89,15 +93,21 @@ class LinkedList {
 
       // handle in between
     } else {
-      let currentNode = this.head
+      // create new node
       const newNode = new Node(value)
 
-      for (let i = 0; i < index - 1; i++) {
-        currentNode = currentNode.next
-      }
+      // get current node at index
+      let nodeAtIndex = this.getNodeAtIndex(index)
 
-      newNode.next = currentNode.next
-      currentNode.next = newNode
+      // set it as leadNode
+      let leadNode = nodeAtIndex
+      newNode.before = leadNode
+
+      // newNode's next is leadNode's next
+      newNode.next = leadNode.next
+
+      // update current node at index (next -- leave before untouched)
+      leadNode.next = newNode
 
       this.length++
       this.printlist()
