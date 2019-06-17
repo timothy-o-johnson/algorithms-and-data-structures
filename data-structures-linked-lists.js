@@ -44,7 +44,7 @@ class LinkedList {
     this.tail = newNode
     this.length++
 
-    this.printlist()
+    this.printList()
     // console.log(JSON.stringify(this))
   }
 
@@ -61,12 +61,12 @@ class LinkedList {
     // point head to new Node
     this.head = newNode
     this.length++
-    this.printlist()
+    this.printList()
 
     // console.log(JSON.stringify(this))
   }
 
-  printlist () {
+  printList () {
     let list = ''
     let currentNode = this.head
 
@@ -113,7 +113,7 @@ class LinkedList {
       newNode.next.before = newNode
 
       this.length++
-      this.printlist()
+      this.printList()
     }
   }
 
@@ -148,21 +148,45 @@ class LinkedList {
       this.tail = secondToLastNode
     }
     this.length--
-    this.printlist()
+    this.printList()
+  }
+
+  reverse () {
+    // create a new linked list
+    // loop through the current linked list prepending all value to the new linked list
+    let currentNode = this.head
+    let reversedLinkedList = new LinkedList(currentNode.value)
+
+    currentNode = currentNode.next
+
+    while (currentNode.next !== null) {
+      reversedLinkedList.prepend(currentNode.value)
+      currentNode = currentNode.next
+    }
+
+    return reversedLinkedList.printList()
   }
 }
 
-let myLinkedList = new LinkedList(10)
+let myLinkedList = new LinkedList(6)
 myLinkedList.append(5)
-myLinkedList.append(16)
-myLinkedList.prepend(1)
-myLinkedList.insert(1, 2)
-myLinkedList.insert(0, 99)
-myLinkedList.insert(15, 99)
-myLinkedList.insert(-3, 102)
-myLinkedList.getNodeAtIndex(3)
-myLinkedList.remove(4)
-myLinkedList.remove(0)
-myLinkedList.remove(6)
+// myLinkedList.append(16)
+// myLinkedList.prepend(1)
+// myLinkedList.insert(1, 2)
+// myLinkedList.insert(0, 99)
+// myLinkedList.insert(15, 99)
+// myLinkedList.insert(-3, 102)
+// myLinkedList.getNodeAtIndex(3)
+// myLinkedList.remove(4)
+// myLinkedList.remove(0)
+// myLinkedList.remove(6)
+
+myLinkedList.append(4)
+myLinkedList.append(3)
+myLinkedList.append(2)
+myLinkedList.append(1)
+myLinkedList.append(0)
+
+myLinkedList.reverse()
 
 console.log('all done!')
