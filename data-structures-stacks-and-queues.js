@@ -1,7 +1,6 @@
 class Node {
   constructor (value) {
     this.value = value
-    this.next = null
   }
 }
 
@@ -74,12 +73,53 @@ class Stack {
   }
 }
 
-const myStack = new Stack()
+class ArrayStack {
+  constructor () {
+    this.stack = []
+  }
+
+  peek () {
+    if (this.stack.length !== 0) {
+      console.log(`peek: ${this.stack[this.stack.length - 1]}!`)
+    }
+    return this.stack.length !== 0 ? this.stack[this.stack.length - 1] : console.log('(0) empty stack')
+  }
+
+  // 5 -- 4 -- 3 -- 2 -- 1
+  push (value) {
+    this.stack.push(value)
+
+    this.printStack()
+  }
+
+  pop () {
+    let popped = this.stack.pop()
+
+    this.printStack()
+
+    return popped || '(0) stack is empty'
+  }
+
+  printStack () {
+    console.log(this.stack)
+  }
+
+  isEmpty () {
+    return !this.stack.length
+  }
+}
+
+const myStack = new ArrayStack()
 
 myStack.push(1)
 myStack.push(2)
-
+myStack.push(3)
+myStack.peek()
 myStack.pop()
 myStack.pop()
 myStack.pop()
 myStack.pop()
+myStack.push(1)
+myStack.push(2)
+myStack.push(3)
+myStack.peek()
