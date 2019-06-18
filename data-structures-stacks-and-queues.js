@@ -16,7 +16,7 @@ class Stack {
     if (this.length !== 0) {
       console.log(`peek: ${this.top.value}!`)
     }
-    return this.length !== 0 ? this.top.value : console.log('empty stack')
+    return this.length !== 0 ? this.top.value : console.log('(0) empty stack')
   }
 
   // 5 -- 4 -- 3 -- 2 -- 1
@@ -44,9 +44,14 @@ class Stack {
       this.length--
     }
 
+    if (this.length === 0) {
+      this.top = null
+      this.bottom = null
+    }
+
     this.printStack()
 
-    return popped || 'stack is empty'
+    return popped || '(0) stack is empty'
   }
 
   printStack () {
@@ -61,31 +66,20 @@ class Stack {
 
       console.log(`(${this.length}) ${stack} ${currentNode.value}`)
     }
+    console.log(this)
+  }
+
+  isEmpty () {
+    return !this.length
   }
 }
 
 const myStack = new Stack()
 
-myStack.push(null)
+myStack.push(1)
 myStack.push(2)
-myStack.push(3)
-myStack.peek()
-myStack.push(4)
-myStack.peek()
-myStack.pop()
-myStack.pop()
-myStack.pop()
-myStack.pop()
-console.log(myStack.pop())
-console.log(myStack.pop())
-myStack.push(2)
-myStack.push(3)
-console.log(myStack.pop())
-myStack.peek()
-myStack.push(4)
-myStack.peek()
 
-
-// Discord
-// Udemy
-// google
+myStack.pop()
+myStack.pop()
+myStack.pop()
+myStack.pop()
