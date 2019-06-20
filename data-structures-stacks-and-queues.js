@@ -140,8 +140,14 @@ class Queue {
     this.last = null
     this.length = 0
   }
-  peek () {}
+  peek () {
+    console.log(`peek: ${this.first ? this.first.value : 'no items in queue'}!`)
+  }
 
+  /**
+   * add an item to the queue from the rear
+   * @param {*} value 
+   */
   enqueue (value) {
     // create new node
     const newNode = new Node(value)
@@ -165,15 +171,19 @@ class Queue {
     this.printQueue()
   }
 
+  /**
+   * remove the front item from the queue
+   */
   dequeue () {
     if (this.length <= 1) {
       this.first = null
       this.last = null
       this.length = 0
     } else {
-      const secondToLast = this.last.prev
-      secondToLast.next = null
-      this.last = secondToLast
+      const secondNode = this.first.next
+      secondNode.prev = null
+  
+      this.first = secondNode
 
       this.length--
     }
@@ -215,10 +225,13 @@ const myQueue = new Queue()
 myQueue.enqueue(1)
 myQueue.enqueue(2)
 myQueue.enqueue(3)
+myQueue.peek()
 myQueue.enqueue(4)
 myQueue.enqueue(5)
 myQueue.dequeue()
 myQueue.dequeue()
 myQueue.dequeue()
+myQueue.peek()
 myQueue.dequeue()
 myQueue.dequeue()
+myQueue.peek()
