@@ -166,28 +166,44 @@ class Queue {
   }
 
   dequeue () {
-    this.last
+    if (this.length <= 1) {
+      this.first = null
+      this.last = null
+      this.length = 0
+    } else {
+      const secondToLast = this.last.prev
+      secondToLast.next = null
+      this.last = secondToLast
+
+      this.length--
+    }
+    this.printQueue()
   }
   // isEmpty;
 
   printQueue () {
     let currentNode = this.first
-    let list = ''
-    let prev
-    let next
+    if (currentNode) {
+      let list = ''
+      let prev
+      let next
 
-    while (currentNode.next !== null) {
+      while (currentNode.next !== null) {
+        prev = getNodeValue('prev')
+        next = getNodeValue('next')
+
+        list += `${currentNode.value} (${prev},${next}) -- `
+        currentNode = currentNode.next
+      }
+
       prev = getNodeValue('prev')
       next = getNodeValue('next')
 
-      list += `${currentNode.value} (${prev},${next}) -- `
-      currentNode = currentNode.next
+      console.log(`(${this.length}) ${list}${currentNode.value} (${prev},${next})`)
+    } else {
+      console.log(`(${this.length}) no items!`)
     }
-
-    prev = getNodeValue('prev')
-    next = getNodeValue('next')
-
-    console.log(`(${this.length}) ${list}${currentNode.value} (${prev},${next})`)
+    console.log(this)
 
     function getNodeValue (key) {
       return currentNode[key] ? currentNode[key].value : currentNode[key]
@@ -201,8 +217,8 @@ myQueue.enqueue(2)
 myQueue.enqueue(3)
 myQueue.enqueue(4)
 myQueue.enqueue(5)
-
-// Joy
-// Matt
-// Pavel
-// Samir
+myQueue.dequeue()
+myQueue.dequeue()
+myQueue.dequeue()
+myQueue.dequeue()
+myQueue.dequeue()
