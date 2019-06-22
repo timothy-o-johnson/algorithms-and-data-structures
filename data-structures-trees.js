@@ -22,21 +22,9 @@ class BinarySearchTree {
     function binarySearchInsert (value, node) {
       // let node = this.root
       if (value > node.value) {
-        if (node.right === null) {
-          node.right = newNode
-        } else {
-          // set right node to current node and use recursion
-          node = node.right
-          binarySearchInsert(value, node)
-        }
+        node.right === null ? (node.right = newNode) : binarySearchInsert(value, node.right)
       } else if (value < node.value) {
-        if (node.left === null) {
-          node.left = newNode
-        } else {
-          // set left node to current node and use recursion
-          node = node.left
-          binarySearchInsert(value, node)
-        }
+        node.left === null ? (node.left = newNode) : binarySearchInsert(value, node.left)
       } else {
         console.log(`node already exists`)
       }
@@ -58,6 +46,7 @@ class BinarySearchTree {
         }
       } else {
         console.log('value not found')
+        return false
       }
     }
   }
