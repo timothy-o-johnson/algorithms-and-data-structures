@@ -46,16 +46,16 @@ function fibonacciIterative (n) {
   return total
 }
 
-console.log(fibonacciIterative(0))
-console.log(fibonacciIterative(1))
-console.log(fibonacciIterative(2))
-console.log(fibonacciIterative(3))
-console.log(fibonacciIterative(4))
-console.log(fibonacciIterative(5))
-console.log(fibonacciIterative(6))
-console.log(fibonacciIterative(7))
-console.log(fibonacciIterative(8))
-console.log(fibonacciIterative(9))
+// console.log(fibonacciIterative(0))
+// console.log(fibonacciIterative(1))
+// console.log(fibonacciIterative(2))
+// console.log(fibonacciIterative(3))
+// console.log(fibonacciIterative(4))
+// console.log(fibonacciIterative(5))
+// console.log(fibonacciIterative(6))
+// console.log(fibonacciIterative(7))
+// console.log(fibonacciIterative(8))
+// console.log(fibonacciIterative(9))
 
 function fibonacciRecursive (n) {
   if (n === 0) {
@@ -66,16 +66,39 @@ function fibonacciRecursive (n) {
 
   return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2)
 }
-  
-console.log('...recursive...')
-console.log(fibonacciRecursive(8))
-console.log(fibonacciRecursive(0))
-console.log(fibonacciRecursive(1))
-console.log(fibonacciRecursive(2))
-console.log(fibonacciRecursive(3))
-console.log(fibonacciRecursive(4))
-console.log(fibonacciRecursive(5))
-console.log(fibonacciRecursive(6))
-console.log(fibonacciRecursive(7))
-console.log(fibonacciRecursive(8))
-console.log(fibonacciRecursive(9))
+
+// console.log('...recursive...')
+// console.log(fibonacciRecursive(8))
+// console.log(fibonacciRecursive(0))
+// console.log(fibonacciRecursive(1))
+// console.log(fibonacciRecursive(2))
+// console.log(fibonacciRecursive(3))
+// console.log(fibonacciRecursive(4))
+// console.log(fibonacciRecursive(5))
+// console.log(fibonacciRecursive(6))
+// console.log(fibonacciRecursive(7))
+// console.log(fibonacciRecursive(8))
+// console.log(fibonacciRecursive(9))
+
+// Implement a function that reverses a string using iteration...and then recursion!
+function reverseStringRecursion (str, iteration) {
+  iteration = iteration === undefined ? 0 : iteration
+  let frontLetter = str[iteration]
+  let backLetter = str[str.length - 1 - iteration]
+  const middle = Math.floor(str.length / 2)
+
+  if (iteration >= middle) {
+    return str
+    // swap index from front and back until we get to center
+  } else {
+    str = str.split('')
+    str[iteration] = backLetter
+    str[str.length - 1 - iteration] = frontLetter
+    str = str.join('')
+
+    return reverseStringRecursion(str, iteration + 1)
+  }
+}
+
+console.log(reverseStringRecursion('some insane yoyo mastery'))
+// should return: 'yretsam oyoy'
