@@ -100,5 +100,23 @@ function reverseStringRecursion (str, iteration) {
   }
 }
 
+function reverseStringIterative (str) {
+  let frontLetter = ''
+  let backLetter = ''
+  str = str.split('')
+
+  const middle = Math.floor(str.length / 2)
+
+  for (let i = 0; i < middle; i++) {
+    frontLetter = str[i]
+    backLetter = str[str.length - 1 - i]
+
+    str[i] = backLetter
+    str[str.length - 1 - i] = frontLetter
+  }
+  return str.join('')
+}
+
 console.log(reverseStringRecursion('some insane yoyo mastery'))
+console.log(reverseStringIterative('some insane yoyo mastery ! ! !'))
 // should return: 'yretsam oyoy'
