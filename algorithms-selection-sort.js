@@ -8,9 +8,11 @@ function selectionSort (array) {
   let temp = null
 
   for (let i = 0; i < array.length; i++) {
-    // loop through list
+    // initialize smallest value
     smallest = array[i]
     smallestIndex = i
+
+    // loop through list
     for (let j = i + 1; j < array.length; j++) {
       current = array[j]
       currentIndex = j
