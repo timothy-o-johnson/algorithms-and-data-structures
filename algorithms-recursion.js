@@ -82,19 +82,20 @@ function fibonacciRecursive (n) {
 
 // Implement a function that reverses a string using iteration...and then recursion!
 function reverseStringRecursion (str, iteration) {
+  str = Array.isArray(str) ? str : str.split('')
   iteration = iteration === undefined ? 0 : iteration
+  
   let frontLetter = str[iteration]
   let backLetter = str[str.length - 1 - iteration]
   const middle = Math.floor(str.length / 2)
 
   if (iteration >= middle) {
+    str = str.join('')
     return str
     // swap index from front and back until we get to center
   } else {
-    str = str.split('')
     str[iteration] = backLetter
     str[str.length - 1 - iteration] = frontLetter
-    str = str.join('')
 
     return reverseStringRecursion(str, iteration + 1)
   }
