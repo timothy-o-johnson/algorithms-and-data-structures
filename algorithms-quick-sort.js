@@ -1,8 +1,8 @@
 const numbers = [10, 9, 4, 3, 2, 1, 8, 7, 6, 5, 0]
 
 function quickSort (array, left, right) {
-  console.log('\n\nquickSort array:')
-  printArray(array)
+  // console.log('\n\nquickSort array:')
+  // printArray(array)
 
   if (right - left <= 0) {
     return
@@ -18,7 +18,7 @@ function quickSort (array, left, right) {
 function partition (array, left, right) {
   let arrayElement, temp, lastElementInS1
   const pivot = array[left]
-  let pivotIndex = left
+  let partitionIndex = left
 
   // console.log('\nstart:')
 
@@ -29,27 +29,27 @@ function partition (array, left, right) {
 
     if (arrayElement < pivot) {
       // move into supartition1
-      pivotIndex++ // intially, the element right next to pivot
-      temp = array[pivotIndex]
-      array[pivotIndex] = arrayElement
+      partitionIndex++ // intially, the element right next to pivot
+      temp = array[partitionIndex]
+      array[partitionIndex] = arrayElement
       array[i] = temp
-      //    printArray(array)
+      // printArray(array)
     }
   }
 
   // place the pivot in its right place (between subpart1 and subpart2) ie the last element in the
-  lastElementInS1 = array[pivotIndex]
+  lastElementInS1 = array[partitionIndex]
   array[left] = lastElementInS1
-  array[pivotIndex] = pivot
+  array[partitionIndex] = pivot
   // console.log('final:')
   // printArray(array)
 
-  return pivotIndex
+  return partitionIndex
 }
 
 // // Select first and last index as 2nd and 3rd parameters
 quickSort(numbers, 0, numbers.length - 1)
-// console.log(numbers)
+printArray(numbers)
 
 function printArray (array) {
   let print = ''
@@ -58,5 +58,3 @@ function printArray (array) {
   }
   console.log(print)
 }
-
-// partition(numbers, 2, numbers.length - 1)
