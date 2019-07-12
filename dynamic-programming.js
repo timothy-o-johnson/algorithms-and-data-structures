@@ -2,7 +2,7 @@
 let calculations = 0
 function fibonacci(n) {
   //O(2^n)
-
+  calculations++
   if (n < 2) {
     return n
   }
@@ -26,18 +26,30 @@ function fibonacciMaster() {
     }
   }
 }
-
 function fibonacciMaster2(n) {
   let answer = [0, 1]
   for (let i = 2; i <= n; i++) {
+    calculations++
     answer.push(answer[i - 2] + answer[i - 1])
   }
   return answer.pop()
 }
 
+const n = 44
 const fasterFib = fibonacciMaster()
 
-console.log("Slow", fibonacci(35))
-console.log("DP", fasterFib(100))
-console.log("DP2", fibonacciMaster2(100))
-console.log("we did " + calculations + " calculations")
+console.log("Slow", fibonacci(n))
+console.log(new Intl.NumberFormat("en-US").format(calculations) + " calculations")
+calculations = 0
+// 40 =   331,160,281 calculations
+// 41 =   535,828,591 calculations
+// 42 =   866,988,873 calculations
+// 43 = 1,402,817,465 calculations
+// 44 = 2,269,806,339 calculations
+
+console.log("\nDP", fasterFib(n))
+console.log(new Intl.NumberFormat("en-US").format(calculations) + " calculations")
+calculations = 0
+
+console.log("\nDP2", fibonacciMaster2(n))
+console.log(new Intl.NumberFormat("en-US").format(calculations) + " calculations")
