@@ -15,6 +15,18 @@
             "request": "launch",
             "name": "dfs-vs-bfs",
             "program": "/Users/tim.johnson/Documents/algorithms-and-data-structures/algorithms-dfs-vs-bfs.js"
-        }
+        },
+        {
+          "type": "node",
+          "request": "launch",
+          "name": "dynamic-programming",
+          "program": "/Users/tim.johnson/Documents/algorithms-and-data-structures/dynamic-programming.js"
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "max-profit",
+        "program": "/Users/tim.johnson/Documents/algorithms-and-data-structures/dynamic-programming-max-profit.js"
+    }
     ]
 }
