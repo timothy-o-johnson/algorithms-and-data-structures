@@ -26,7 +26,19 @@
         "type": "node",
         "request": "launch",
         "name": "max-profit",
-        "program": "/Users/tim.johnson/Documents/algorithms-and-data-structures/dynamic-programming-max-profit.js"
-    }
+        "program": "/home/pavementii/Personal/algorithms-and-data-structures/dynamic-programming-max-profit.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "max-profit-brute",
+      "program": "/home/pavementii/Personal/algorithms-and-data-structures/dynamic-programming-max-profit-brute.js"
+  },
+  {
+    "type": "node",
+    "request": "launch",
+    "name": "robber",
+    "program": "/home/pavementii/Personal/algorithms-and-data-structures/dynamic-programming-house-robber.js"
+}
     ]
 }
