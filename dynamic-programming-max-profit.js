@@ -72,8 +72,7 @@ class BinarySearchTree {
     if (value === this.root.value) {
       result = this.root
     } else {
-  
-     result = lookupHelper(value, this.root)
+      result = lookupHelper(value, this.root)
 
       function lookupHelper(value, currentNode) {
         let result = null
@@ -98,31 +97,59 @@ class BinarySearchTree {
       }
     }
 
-    return JSON.stringify(result)
+    return result
   }
 }
 
-const newTree = new BinarySearchTree(25)
-const size = 6
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function (prices) {
+  let maxProfit = 0
+  let node, price
 
-let value = 0
-for (let i = 1; i < size; i++) {
-  value += i * 3 + 25
-  newTree.insert(value)
+  let newSearchTree = new BinarySearchTree(prices[0])
+  // put the data into a binomial search tree
+  for (let i = 1; i < prices.length; i++) {
+    newSearchTree.insert(prices[i])
+  }
 
-  value -= 2 * i + 25
-  newTree.insert(value)
+  newSearchTree.printTree(newSearchTree.root)
+  const getHighestPrice = getHighestPriceMaster()
+  let highestPrice = 0
+  // take each price find the highest value that follows
+  for (let i = 0; i < prices.length; i++) {
+    price = prices[i]
+    node = newSearchTree.lookup(price)
+    highestPrice = getHighestPrice(node)
+    console.log(`${price}: ${highestPrice}`)
+    maxProfit = (highestPrice - price) > maxProfit ? (highestPrice - price) : maxProfit
+    console.log('maxProfit', maxProfit)
+  }
+
+  function getHighestPriceMaster(node) {
+    let cache = {}
+    let count = 0
+
+    return function getHighestPrice(node) {
+      console.log('count: ', count++)
+      if (cache[node.value]) {
+        console.log(`cache: ${node.value}`)
+        return cache[node.value]
+      } else if (node.right === null) {
+        cache[node.value] = node.value
+        return node.value
+      } else {
+        return getHighestPrice(node.right)
+      }
+    }
+  }
+  // calculate the profit
+  // if profit is greater than current max, replace with new max profit
+  // return the maxProfit value
 }
 
-newTree.insert(27)
-newTree.insert(29)
-newTree.insert(31)
-newTree.insert(36)
+const prices = [2, 0, 1, 5, 3, 6, 4, 20, 1]
 
-newTree.insert(2)
-newTree.insert(4)
-newTree.insert(8)
-
-newTree.printTree(newTree.root)
-
-console.log(`\n` + newTree.lookup(37))
+maxProfit(prices)
