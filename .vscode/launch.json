@@ -1,44 +1,50 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/magic-square.js"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "dfs-vs-bfs",
-            "program": "/Users/tim.johnson/Documents/algorithms-and-data-structures/algorithms-dfs-vs-bfs.js"
-        },
-        {
-          "type": "node",
-          "request": "launch",
-          "name": "dynamic-programming",
-          "program": "/Users/tim.johnson/Documents/algorithms-and-data-structures/dynamic-programming.js"
-      },
-      {
-        "type": "node",
-        "request": "launch",
-        "name": "max-profit",
-        "program": "/home/pavementii/Personal/algorithms-and-data-structures/dynamic-programming-max-profit.js"
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/magic-square.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "dfs-vs-bfs",
+      "program": "/Users/tim.johnson/Documents/algorithms-and-data-structures/algorithms-dfs-vs-bfs.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "dynamic-programming",
+      "program": "/Users/tim.johnson/Documents/algorithms-and-data-structures/dynamic-programming.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "max-profit",
+      "program": "/home/pavementii/Personal/algorithms-and-data-structures/dynamic-programming-max-profit.js"
     },
     {
       "type": "node",
       "request": "launch",
       "name": "max-profit-brute",
       "program": "/home/pavementii/Personal/algorithms-and-data-structures/dynamic-programming-max-profit-brute.js"
-  },
-  {
-    "type": "node",
-    "request": "launch",
-    "name": "robber",
-    "program": "/home/pavementii/Personal/algorithms-and-data-structures/dynamic-programming-house-robber.js"
-}
-    ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "robber",
+      "program": "/home/pavementii/Personal/algorithms-and-data-structures/dynamic-programming-house-robber.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "stairs",
+      "program": "/home/pavementii/Personal/algorithms-and-data-structures/dynamic-programming-climbing-stairs.js"
+    }
+  ]
 }
