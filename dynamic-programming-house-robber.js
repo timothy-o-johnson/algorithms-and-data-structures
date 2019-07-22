@@ -38,16 +38,14 @@ let count = 0
  */
 function rob (nums) {
   let popped, arraySkip1, arraySkip2
+  console.log(nums.join(''))
+  
   count++
   // this is the bottom, build from here
   if (nums.length < 2) {
     return nums[0] || 0
   }
 
-  // otherwise, shorten the array (pop the value going on two different paths (skip 1 (pop() x1 ) or skip 2 pop()x2)
-  // popped = nums.pop()
-  // arraySkip1 = nums.slice(0, nums.length - 1)
-  // arraySkip2 = nums.slice(0, nums.length - 2)
   popped = nums.shift()
   arraySkip1 = nums.slice(1, nums.length)
   arraySkip2 = nums.slice(2, nums.length)
@@ -60,3 +58,7 @@ let nums = [2, 7, 9, 3, 1]
 
 console.log(rob(nums))
 console.log('total calls: ', count)
+
+module.exports = {
+  rob
+}
