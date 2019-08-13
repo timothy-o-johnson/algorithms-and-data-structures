@@ -45,6 +45,13 @@
       "request": "launch",
       "name": "stairs",
       "program": "/home/pavementii/Personal/algorithms-and-data-structures/dynamic-programming-climbing-stairs.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "math-knockout-game-count",
+      "program": "/Users/tim.johnson/Documents/MathKnockout/GameCount.js"
     }
   ]
 }
+// /Users/tim.johnson/Documents/MathKnockout/GameCount.js
